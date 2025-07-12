@@ -1,0 +1,13 @@
+.homeContainer,
+.postList {
+  display: flex;
+  flex-direction: column;
+}
+
+.homeContainer {
+  gap: 1rem;
+}
+
+.postList {
+  gap: 1rem;
+}

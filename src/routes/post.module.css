@@ -1,0 +1,31 @@
+.postContainer,
+.commentsContainer,
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.postContainer {
+  gap: 3rem;
+}
+
+.contentContainer {
+  gap: 1rem;
+}
+
+.commentsContainer {
+  gap: 1rem;
+}
+
+.postContent {
+  white-space: pre-wrap;
+  line-height: 1.5rem;
+}
+
+.createCommentForm > textarea {
+  height: 7rem;
+}
+
+.createCommentForm > div {
+  text-align: end;
+}

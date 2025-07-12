@@ -1,0 +1,19 @@
+.commentContainer {
+  padding: 1rem;
+  /* border: var(--default-border-value); */
+  border-radius: var(--default-border-radius);
+  box-shadow: rgba(255, 204, 0, 0.5) 0 0 2px 2px;
+  background-color: var(--secondary-color);
+}
+
+.commentHeader {
+  margin-bottom: 1rem;
+}
+
+.commentUser {
+  color: var(--accent-color);
+}
+
+.commentContent {
+  font-style: italic;
+}
