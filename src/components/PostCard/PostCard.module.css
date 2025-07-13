@@ -5,6 +5,8 @@
   box-shadow: var(--default-box-shadow-value);
   background-color: var(--secondary-color);
   height: 8rem;
+
+  overflow: hidden;
 }
 
 .postCardContainer:hover {
