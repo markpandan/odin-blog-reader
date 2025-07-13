@@ -1,9 +1,9 @@
 import PostCard from "../components/PostCard";
-import useFetchPosts from "../hooks/useFetchPosts";
+import useGetData from "../hooks/useGetData";
 import styles from "./home.module.css";
 
 const Home = () => {
-  const [postLists] = useFetchPosts();
+  const postLists = useGetData("posts");
 
   return (
     <div className={`container ${styles.homeContainer}`}>

@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { createContext, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -9,6 +9,7 @@ import Home from "./routes/home";
 import Login from "./routes/login.jsx";
 import Signup from "./routes/signup.jsx";
 import Post from "./routes/post.jsx";
+import { AuthProvider } from "./utils/authUtils.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+export const AuthContext = createContext({
+  token: localStorage.getItem("token"),
+});
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

@@ -1,15 +1,13 @@
 import { useParams } from "react-router-dom";
 import CommentCard from "../components/CommentCard";
-import useFetchPosts from "../hooks/useFetchPosts";
 import styles from "./post.module.css";
-import useFetchComments from "../hooks/useFetchComments";
+import useGetData from "../hooks/useGetData";
 
 const Post = () => {
   const { postId } = useParams();
 
-  const [post] = useFetchPosts(postId);
-  const [comments] = useFetchComments(postId);
-  console.log(comments);
+  const post = useGetData(`posts/${postId}`);
+  const comments = useGetData(`posts/${postId}/comments`);
 
   return (
     <div className={`container ${styles.postContainer}`}>
