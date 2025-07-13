@@ -1,14 +1,20 @@
 import { useState } from "react";
 import styles from "./login.module.css";
 import { fetchPost } from "../utils/fetchUtils";
+import { useAuth } from "../utils/authUtils";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
+  const { token, setToken } = useAuth();
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
   });
-
   const [error, setError] = useState("");
+
+  if (token) {
+    return <Navigate to="/" />;
+  }
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -20,15 +26,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetchPost("readers/login", {
-      username: inputs.username,
-      password: inputs.password,
+      ...inputs,
     });
 
     const data = await response.json();
     if (!response.ok) {
       setError(data.message);
     } else {
-      localStorage.setItem("token", data.output.token);
+      setToken(data.output.token);
       setError("");
     }
   };

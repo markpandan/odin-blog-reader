@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchGet } from "../utils/fetchUtils";
 
-const useGetData = (route) => {
+const useGetData = (route, token) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ const useGetData = (route) => {
 
     const fetchPosts = async () => {
       try {
-        const response = await fetchGet(route, abortController.signal);
+        const response = await fetchGet(route, abortController.signal, token);
 
         const jsonData = await response.json();
         if (!response.ok) {
@@ -27,7 +27,7 @@ const useGetData = (route) => {
     fetchPosts();
 
     return () => abortController.abort();
-  }, [route]);
+  }, [route, token]);
 
   return data;
 };
