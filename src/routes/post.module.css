@@ -29,3 +29,11 @@
 .createCommentForm > div {
   text-align: end;
 }
+
+.loginContainer {
+  text-align: center;
+  padding: 2rem;
+  border: var(--default-border-value);
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--default-box-shadow-value);
+}

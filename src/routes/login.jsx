@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./login.module.css";
 import { fetchPost } from "../utils/fetchUtils";
 import { useAuth } from "../utils/authUtils";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 const Login = () => {
   const { token, setToken } = useAuth();
@@ -68,7 +68,7 @@ const Login = () => {
             </button>
           </div>
           <p>
-            Or <a href="/signup">sign up</a> for a new one
+            Or <Link to="/signup">sign up</Link> for a new one
           </p>
         </form>
       </div>

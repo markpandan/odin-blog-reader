@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../utils/authUtils";
 import CommentCard from "../components/CommentCard";
@@ -13,6 +13,7 @@ const Post = () => {
     comment: "",
   });
 
+  console.log(user);
   const post = useGetData(`posts/${postId}`);
   const comments = useGetData(`posts/${postId}/comments`);
 
@@ -50,20 +51,28 @@ const Post = () => {
           <h2>Comments</h2>
           <hr />
         </div>
-        <div>
-          <form onSubmit={handleSubmit} className={styles.createCommentForm}>
-            <textarea
-              name="comment"
-              id="comment"
-              value={inputs.comment}
-              onChange={handleChange}
-              required
-            ></textarea>
-            <div>
-              <button type="submit">Submit</button>
-            </div>
-          </form>
-        </div>
+
+        {Object.keys(user).length != 0 ? (
+          <div>
+            <form onSubmit={handleSubmit} className={styles.createCommentForm}>
+              <textarea
+                name="comment"
+                id="comment"
+                value={inputs.comment}
+                onChange={handleChange}
+                required
+              ></textarea>
+              <div>
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        ) : (
+          <div className={styles.loginContainer}>
+            <Link to="/login">Log In</Link> to post a comment
+          </div>
+        )}
+
         {comments.map((comment, index) => (
           <CommentCard key={index} user={comment.reader.username}>
             {comment.content}
